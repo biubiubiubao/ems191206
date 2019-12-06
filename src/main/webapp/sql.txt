@@ -1,0 +1,44 @@
+
+user表
+username
+password
+name
+sex
+
+
+drop table e_user;
+
+create table e_user(
+username varchar2(20),
+password varchar2(20),
+name varchar2(20),
+sex varchar2(10)
+);
+
+insert into e_user values('Tom','123456','汤姆','男');
+
+
+
+create table e_emp(
+id varchar2(36),
+name varchar2(50),
+salary number(10,2),
+age number(3)
+);
+insert into e_emp values('1','Songzx',59845,39);
+insert into e_emp values('2','漩涡鸣人',59845,39);
+insert into e_emp values('3','宇智波佐助',59845,39);
+insert into e_emp values('4','千手柱间',59845,39);
+insert into e_emp values('5','大蛇丸',59845,39);
+insert into e_emp values('6','纲手',59845,39);
+insert into e_emp values('7','卡卡西',59845,39);
+insert into e_emp values('8','我爱罗',59845,39);
+
+
+
+
+
+
+
+
+
