@@ -1,3 +1,4 @@
+<%@page pageEncoding="UTF-8" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 	<head>
@@ -5,6 +6,23 @@
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<link rel="stylesheet" type="text/css"
 			href="css/style.css" />
+		<script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-2.2.1.min.js"></script>
+		<script type="text/javascript">
+			$(function () {
+				$('#addButton').click(function () {
+					var name = $('#name').val();
+					var age = $('#age').val();
+					var salary = $('#salary').val();
+					$.post('${pageContext.request.contextPath}/emp/empAdd',
+							{"name":name,"age":age,"salary":salary},function (data) {
+								window.location.href = "${pageContext.request.contextPath}/emplist.jsp";
+							})
+				});
+
+
+			});
+
+		</script>
 	</head>
 
 	<body>
@@ -39,7 +57,7 @@
 									name:
 								</td>
 								<td valign="middle" align="left">
-									<input type="text" class="inputgri" name="name" />
+									<input type="text" class="inputgri" id="name" />
 								</td>
 							</tr>
 							<tr>
@@ -47,7 +65,7 @@
 									salary:
 								</td>
 								<td valign="middle" align="left">
-									<input type="text" class="inputgri" name="salary" />
+									<input type="text" class="inputgri" id="salary" />
 								</td>
 							</tr>
 							<tr>
@@ -55,12 +73,12 @@
 									age:
 								</td>
 								<td valign="middle" align="left">
-									<input type="text" class="inputgri" name="age" />
+									<input type="text" class="inputgri" id="age" />
 								</td>
 							</tr>
 						</table>
 						<p>
-							<input type="submit" class="button" value="Confirm" />
+							<input type="button" class="button" value="Confirm" id="addButton" />
 						</p>
 					</form>
 				</div>

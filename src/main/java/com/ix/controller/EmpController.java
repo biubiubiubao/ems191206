@@ -1,5 +1,6 @@
 package com.ix.controller;
 
+import com.ix.entity.Emp;
 import com.ix.service.EmpService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,5 +19,13 @@ public class EmpController {
         //查询数据并返回
         return empService.empQueryAllSplitPage(5, page);
     }
+
+    @RequestMapping("empAdd")
+    public Map<String,Object> empAdd(Emp emp) {
+        //添加数据并返回
+        return empService.empAdd(emp);
+    }
+
+
 
 }

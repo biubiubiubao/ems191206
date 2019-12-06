@@ -19,7 +19,7 @@
 					$.post('${pageContext.request.contextPath}/user/userLogin','username='+username+"&password="+password,function (date) {
 						if (date['status'] == 200) {
 							//登录成功，跳转页面
-							// window.location.href = "";
+							window.location.href = "${pageContext.request.contextPath}/emplist.jsp";
 						}else{
 							$('#spanMessage').text(date['message']);
 						}

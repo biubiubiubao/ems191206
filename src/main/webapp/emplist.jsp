@@ -11,7 +11,7 @@
 				fenye(1);
 
 
-			})
+			});
 			function fenye(page) {
 				$.post('${pageContext.request.contextPath}/emp/empQueryAllSplitPage','page='+page,function (data) {
 					for (var i in data['emps']) {
@@ -89,7 +89,7 @@
 					</button><br><br>
 
 					<p>
-						<input type="button" class="button" value="Add Employee" onclick="location='addEmp.html'"/>
+						<input type="button" class="button" value="Add Employee" onclick="location='${pageContext.request.contextPath}/addEmp.jsp'"/>
 					</p>
 
 				</div>
