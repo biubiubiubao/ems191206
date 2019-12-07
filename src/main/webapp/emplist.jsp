@@ -21,13 +21,18 @@
 						var name = $('<td>'+emp.name+'</td>');
 						var salary = $('<td>'+emp.salary+'</td>');
 						var age = $('<td>'+emp.age+'</td>');
-						var operating = $('<td><a href="">delete emp</a>&nbsp;<a href="">update emp</a></td>');
+						var operating = $(`<td><a href="">delete emp</a>&nbsp;<a href="${pageContext.request.contextPath}/emp/empQueryOne?id=`+emp.id+`"> update emp</a></td>`);
 						tr.append(id).append(name).append(salary).append(age).append(operating);
 						$('#tbody').append(tr);
 
 					}
 				});
 			}
+			// function modify(id) {
+				<%--$.post('${pageContext.request.contextPath}/emp/empQueryOne','id='+id,function (data) {--%>
+					<%--window.location.href = '${pageContext.request.contextPath}/updateEmp.jsp';--%>
+				// })
+			// }
 			function controllerPage() {
 
 			}
