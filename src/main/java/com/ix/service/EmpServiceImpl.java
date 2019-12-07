@@ -23,10 +23,23 @@ public class EmpServiceImpl implements EmpService {
     @Transactional(propagation = Propagation.SUPPORTS)
     @Override
     public Map<String, Object> empQueryAllSplitPage(Integer step,Integer page) {
+        //创建map
         HashMap<String, Object> map = new HashMap<>();
+        //查询数据
         List<Emp> emps = empDao.selectByRowBounds(null, new RowBounds((page-1)*step, step));
+        //查询总条数
+        int selectCount = empDao.selectCount(null);
+        //判断总页数
+        int pageCount = 0;
+        if (selectCount % step == 0) {
+            pageCount = selectCount / step;
+        }else{
+            pageCount = selectCount / step + 1;
+        }
+        //存入map
         map.put("status","200");
         map.put("emps",emps);
+        map.put("pageCount",pageCount);
         return map;
     }
 

@@ -9,11 +9,20 @@
 		<script type="text/javascript">
 			$(function () {
 				fenye(1);
-
-
 			});
-			function fenye(page) {
+			function fenye(page){
+                //设置当前页码
+			    $('#nowPage').val(page);
+                //控制上一页是否出现
+                if (page == 1) {
+                    $('#sbutton').css("display","none");
+                }else{
+                    $('#sbutton').css("display","inline");
+                }
+
+			    //查询数据
 				$.post('${pageContext.request.contextPath}/emp/empQueryAllSplitPage','page='+page,function (data) {
+                    $('#tbody').empty();
 					for (var i in data['emps']) {
 						var emp = data['emps'][i];
 						var tr = $('<tr>').attr("class","row1");
@@ -24,12 +33,24 @@
 						var operating = $(`<td><a href="${pageContext.request.contextPath}/emp/empDelete?id=`+emp.id+`">delete emp</a>&nbsp;<a href="${pageContext.request.contextPath}/emp/empQueryOne?id=`+emp.id+`"> update emp</a></td>`);
 						tr.append(id).append(name).append(salary).append(age).append(operating);
 						$('#tbody').append(tr);
-
 					}
-				});
+					//控制下一页是否出现
+                    if (page >= data['pageCount']) {
+                        $('#xbutton').css("display","none");
+                    }else{
+                        $('#xbutton').css("display","inline");
+                    }
+                });
 			}
-			function controllerPage() {
-
+			function controllerPage(pageVal) {
+                //设置当前页码
+                var nowPage = $('#nowPage').val();
+                //查询数据
+                if ('+1' == pageVal) {
+                    fenye(Number(nowPage)+1);
+                }else if ('-1' == pageVal) {
+                    fenye(Number(nowPage)-1);
+                }
 			}
 		</script>
 	</head>
@@ -77,14 +98,14 @@
 						</tr>
 						<tbody id="tbody"></tbody>
 					</table>
-					<button onclick="changePage('-1')" id="sbutton" >
+					<button onclick="controllerPage('-1')" id="sbutton" >
 						上一页
 					</button>
 					<%--存放当前页码,和显示当前页码--%>
 					<span id="nowPage"></span>
 					<%--存放总页数--%>
 					<input type="hidden" id="total">
-					<button onclick="changePage('+1')" id="xbutton">
+					<button onclick="controllerPage('+1')" id="xbutton">
 						下一页
 					</button><br><br>
 
