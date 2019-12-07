@@ -40,8 +40,14 @@ public class EmpController {
     }
 
     @RequestMapping("empModify")
-    public String emoModify(Emp emp) {
+    public String empModify(Emp emp) {
         empService.empModify(emp);
+        return "redirect:/emplist.jsp";
+    }
+
+    @RequestMapping("empDelete")
+    public String empDelete(Emp emp) {
+        empService.empDelete(emp);
         return "redirect:/emplist.jsp";
     }
 

@@ -6,12 +6,6 @@
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<link rel="stylesheet" type="text/css"
 			href="${pageContext.request.contextPath}/css/style.css" />
-		<script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-2.2.1.min.js"></script>
-		<script type="text/javascript">
-			$(function () {
-
-			})
-		</script>
 	</head>
 
 	<body>
