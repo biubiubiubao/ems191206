@@ -19,8 +19,12 @@ public class EmpController {
     @ResponseBody
     @RequestMapping("empQueryAllSplitPage")
     public Map<String,Object> empQueryAllSplitPage(Integer page) {
+//        long start = System.currentTimeMillis();
+        Map<String, Object> map = empService.empQueryAllSplitPage(5, page);
+//        long end = System.currentTimeMillis();
+//        System.out.println("时间差 "+(end-start));
         //查询数据并返回
-        return empService.empQueryAllSplitPage(5, page);
+        return map;
     }
 
     @ResponseBody

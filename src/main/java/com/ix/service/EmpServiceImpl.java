@@ -1,5 +1,7 @@
 package com.ix.service;
 
+import com.ix.annotation.EmpAddCacheAnnotation;
+import com.ix.annotation.EmpDeleteCacheAnnotation;
 import com.ix.dao.EmpDao;
 import com.ix.entity.Emp;
 import org.apache.ibatis.session.RowBounds;
@@ -22,6 +24,7 @@ public class EmpServiceImpl implements EmpService {
 
     @Transactional(propagation = Propagation.SUPPORTS)
     @Override
+    @EmpAddCacheAnnotation("添加或查询emp缓存")
     public Map<String, Object> empQueryAllSplitPage(Integer step,Integer page) {
         //创建map
         HashMap<String, Object> map = new HashMap<>();
@@ -56,6 +59,7 @@ public class EmpServiceImpl implements EmpService {
     }
 
     @Override
+    @EmpDeleteCacheAnnotation("删除缓存")
     public Map<String, Object> empAdd(Emp emp) {
         //创建map
         HashMap<String, Object> map = new HashMap<>();
@@ -69,6 +73,7 @@ public class EmpServiceImpl implements EmpService {
     }
 
     @Override
+    @EmpDeleteCacheAnnotation("删除缓存")
     public Map<String, Object> empModify(Emp emp) {
         //创建map
         HashMap<String, Object> map = new HashMap<>();
@@ -80,6 +85,7 @@ public class EmpServiceImpl implements EmpService {
     }
 
     @Override
+    @EmpDeleteCacheAnnotation("删除缓存")
     public Map<String, Object> empDelete(Emp emp) {
         //创建map
         HashMap<String, Object> map = new HashMap<>();
